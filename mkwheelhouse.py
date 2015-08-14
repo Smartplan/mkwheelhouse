@@ -107,9 +107,10 @@ def build_wheels(packages, index_url, requirements, exclusions):
         '--wheel-dir', temp_dir,
         '--find-links', index_url
     ]
-
     for requirement in requirements:
-        args += ['--requirement', requirement]
+        reqs = requirement.split()
+        #args += ['--requirement', requirement]
+        args += ['--requirement'] + reqs
 
     args += packages
     subprocess.check_call(args)
